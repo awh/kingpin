@@ -31,6 +31,8 @@ object Main {
     matchState(p).currentFrame match {
       case None => throw new IllegalStateException("Cannot take a turn in a completed game")
       case Some(currentFrame) => {
+        val clear = Array(0x1b, 0x5b, 0x48, 0x1b, 0x5b, 0x32, 0x4a).map(_.toByte)
+        Console.out.write(clear)
         ScoreBoard.lines(matchState).foreach(println)
         println()
 

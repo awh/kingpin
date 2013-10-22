@@ -18,7 +18,7 @@ class Match(val players: List[Player], val games: Map[Player, Game]) {
   lazy val teamScore: Int = games.values.map(_.totalScore).sum
 
   // List of all players who achieved the high score
-  lazy val leaders: List[Player] = games.filter(pg => pg._2.totalScore == highScore).keys.toList
+  lazy val leaders: List[Player] = games.filter({case (_, g) => g.totalScore == highScore}).keys.toList
 
   // Obtain the game of a specific player
   def apply(p: Player): Game = games(p)
