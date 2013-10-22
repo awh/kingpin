@@ -26,13 +26,13 @@ object Main {
     }
   }
 
+  /* Interact with the user as many times as required to complete a full turn for the specified player.
+   */
   @tailrec
   def takeTurn(matchState: Match, p: Player): Match = {
     matchState(p).currentFrame match {
       case None => throw new IllegalStateException("Cannot take a turn in a completed game")
       case Some(currentFrame) => {
-        val clear = Array(0x1b, 0x5b, 0x48, 0x1b, 0x5b, 0x32, 0x4a).map(_.toByte)
-        Console.out.write(clear)
         ScoreBoard.lines(matchState).foreach(println)
         println()
 
@@ -54,6 +54,8 @@ object Main {
     }
   }
 
+  /* Get the next throw for the specified user and advance the game state accordingly.
+   */
   @tailrec
   def interact(matchState: Match, p: Player, remainingPins: Int): Match = {
     print(s"${p.name}'s turn (0 - $remainingPins or '/' for all remaining pins): ")
