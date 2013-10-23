@@ -27,4 +27,4 @@ specified as arguments:
 * State machine modelled as case classes
 * Scoring by recursive pattern matching
 * Next game state and remaining pins computed via polymorphic dispatch
-* No vars were harmed in the making of this programme!
+* No vars were mutated in the making of this programme!
